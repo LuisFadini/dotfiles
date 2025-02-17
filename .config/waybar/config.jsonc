@@ -1,0 +1,70 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top",
+  "position": "top",
+  "height": 20,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "clock",
+    "custom/notifications",
+    "custom/wifi",
+    "custom/power",
+  ],
+  "clock": {
+    "timezone": "America/Sao_Paulo",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}",
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""],
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% 󰂯",
+    "format-bluetooth-muted": "\ueee8 󰂯",
+    "format-muted": "\ueee8",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "󱡒",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    "on-click": "pavucontrol",
+  },
+  "custom/notifications": {
+    "format": "\uf0fe",
+    "tooltip": false,
+    "on-click": "swaync-client -t",
+  },
+  "custom/wifi": {
+    "format": "\uf1eb ",
+    "tooltip": false,
+    "on-click": "wofi-wifi-menu",
+  },
+  "custom/power": {
+    "format": "\uf011 ",
+    "tooltip": false,
+    "on-click": "wlogout --protocol layer-shell",
+  },
+}

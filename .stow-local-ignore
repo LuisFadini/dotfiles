@@ -1,0 +1,7 @@
+scripts
+setup.sh
+
+\.git
+\.gitignore
+
+^/README.*

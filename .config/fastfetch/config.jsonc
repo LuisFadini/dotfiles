@@ -1,0 +1,78 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/images/arch-logo.png",
+    "type": "kitty-direct",
+    "height": 15,
+    "width": 30
+  },
+  "display": {
+    "separator": " : ",
+  },
+  "modules": [
+    {
+      "type": "os",
+      "key": "󰣇 OS",
+      "keycolor": "96",
+    },
+    {
+      "type": "kernel",
+      "key": " Kernel",
+      "keycolor": "33",
+    },
+    {
+      "type": "uptime",
+      "key": " Uptime",
+      "keycolor": "32",
+    },
+    {
+      "type": "packages",
+      "key": " Packages",
+      "keycolor": "35",
+    },
+    {
+      "type": "wm",
+      "key": " WM",
+      "keycolor": "34",
+    },
+    {
+      "type": "terminal",
+      "key": " Terminal",
+      "keycolor": "33",
+    },
+    "break",
+    {
+      "type": "title",
+      "key": " User",
+      "keycolor": "32",
+    },
+    "break",
+    {
+      "type": "cpu",
+      "format": "{1}",
+      "key": " CPU",
+      "keycolor": "34",
+    },
+    {
+      "type": "gpu",
+      "format": "{2}",
+      "key": " GPU {}",
+      "keycolor": "34"
+    },
+    {
+      "type": "memory",
+      "key": " Memory",
+      "keycolor": "35"
+    },
+    {
+      "type": "swap",
+      "key": "󰾴 Swap",
+      "keycolor": "35"
+    },
+    {
+      "type": "disk",
+      "key": " Storage",
+      "keycolor": "35"
+    },
+  ],
+}

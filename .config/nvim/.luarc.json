@@ -1,0 +1,37 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "options"
+    ],
+    "workspace.library": [
+        "/home/luis/.config/nvim",
+        "/home/luis/.local/share/nvim/lazy/lazy.nvim",
+        "/home/luis/.local/share/nvim/lazy/mason-lspconfig.nvim",
+        "/home/luis/.local/share/nvim/lazy/nui.nvim",
+        "/home/luis/.local/share/nvim/lazy/nvim-web-devicons",
+        "/home/luis/.local/share/nvim/lazy/neo-tree.nvim",
+        "/home/luis/.local/share/nvim/lazy/none-ls.nvim",
+        "/home/luis/.local/share/nvim/lazy/plenary.nvim",
+        "/home/luis/.local/share/nvim/lazy/telescope.nvim",
+        "/home/luis/.local/share/nvim/lazy/telescope-ui-select.nvim",
+        "/home/luis/.local/share/nvim/lazy/nvim-cmp",
+        "/home/luis/.local/share/nvim/lazy/autoclose.nvim",
+        "/home/luis/.local/share/nvim/lazy/vim-be-good",
+        "/home/luis/.local/share/nvim/lazy/lualine.nvim",
+        "/home/luis/.local/share/nvim/lazy/friendly-snippets",
+        "/home/luis/.local/share/nvim/lazy/cmp_luasnip",
+        "/home/luis/.local/share/nvim/lazy/LuaSnip",
+        "/home/luis/.local/share/nvim/lazy/mason.nvim",
+        "/home/luis/.local/share/nvim/lazy/nvim-treesitter",
+        "/home/luis/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/luis/.local/share/nvim/lazy/vim-commentary",
+        "/home/luis/.local/share/nvim/lazy/cmp-nvim-lsp",
+        "/home/luis/.local/share/nvim/lazy/dracula.nvim",
+        "/usr/share/nvim/runtime",
+        "/usr/lib64/nvim",
+        "/home/luis/.local/state/nvim/lazy/readme",
+        "/home/luis/.local/share/nvim/lazy/cmp_luasnip/after",
+        "/home/luis/.local/share/nvim/lazy/cmp-nvim-lsp/after",
+        "${3rd}/luassert/library"
+    ]
+}

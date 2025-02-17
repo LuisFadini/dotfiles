@@ -1,0 +1,99 @@
+@import "frappe.css";
+
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: "Hack Nerd Font";
+  font-size: 13px;
+  min-height: 0;
+}
+
+#waybar {
+  background: alpha(@base, 0.3);
+  color: @text;
+  margin: 5px 5px;
+}
+
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @surface0;
+  margin-left: 1rem;
+}
+
+#woskspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
+}
+
+#workspaces button.active {
+  color: @blue;
+  border-radius: 1rem;
+  background-color: @surface1;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+  background-color: @surface2;
+}
+
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#custom-notifications,
+#custom-wifi,
+#custom-power {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#clock {
+  color: @blue;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#backlight,
+#battery {
+  border-radius: 0;
+}
+
+#pulseaudio {
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  border-radius: 0 1rem 1rem 0;
+  color: @red;
+}
+
+#custom-wifi {
+  color: @blue;
+}
+
+#custom-notifications {
+  border-radius: 1rem 0 0 1rem;
+  color: @sapphire;
+}
