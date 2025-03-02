@@ -8,7 +8,7 @@ This repository contains the dotfiles for my Arch Linux setup, featuring custom 
 - [Hyprpaper](https://wiki.hyprland.org/Hypr-Ecosystem/hyprpaper)
 - [Hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock)
 - [Hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/hypridle)
-- [Kitty](https://github.com/kovidgoyal/kitty)
+- [Ghostty](https://ghostty.org)
 - [Wofi](https://hg.sr.ht/~scoopta/wofi)
 - [Wlogout](https://github.com/ArtsyMacaw/wlogout)
 - [Waybar](https://github.com/Alexays/Waybar)
