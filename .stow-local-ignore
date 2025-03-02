@@ -1,7 +1,9 @@
 scripts
 setup.sh
 
+screenshots
+
 \.git
 \.gitignore
 
-^/README.*
+^/readme.*

@@ -16,7 +16,7 @@ window {
 #inner-box {
 	margin: 5px;
 	border: none;
-	background-color transparent;
+	background-color: transparent;
 }
 
 #outer-box {
