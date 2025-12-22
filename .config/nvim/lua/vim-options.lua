@@ -2,8 +2,9 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
-vim.cmd("set whichwrap+=<,>,[,]")
+vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd("set clipboard+=unnamedplus")
+vim.cmd("set eol")
 
 vim.opt.relativenumber = true
 vim.opt.number = true

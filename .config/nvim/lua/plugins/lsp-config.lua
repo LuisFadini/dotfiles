@@ -51,6 +51,24 @@ return {
             capabilities = capabilities,
           })
         end,
+
+        ["ts_ls"] = function()
+          nvim_lsp.ts_ls.setup({
+
+            root_dir = require("lspconfig").util.root_pattern({ "package.json", "tsconfig.json" }),
+            single_file_support = false,
+            settings = {},
+            capabilities = capabilities,
+          })
+        end,
+        ["denols"] = function()
+          nvim_lsp.denols.setup({
+            root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
+            single_file_support = false,
+            settings = {},
+            capabilities = capabilities,
+          })
+        end,
       })
     end,
   },

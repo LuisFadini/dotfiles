@@ -18,6 +18,7 @@ This repository contains the dotfiles for my Arch Linux setup, featuring custom 
 - [Cava](https://github.com/karlstav/cava)
 - [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 - [Zinit](https://github.com/zdharma-continuum/zinit)
+- [Oh my posh](https://ohmyposh.dev/)
 
 ## Screenshots
 

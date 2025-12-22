@@ -1,0 +1,35 @@
+@use "sass:color";
+@use "../variables" as vars;
+
+.workspaces {
+  background-color: vars.$base;
+  padding: 0px 4px;
+  border-radius: vars.$radius;
+
+  button {
+    all: unset;
+    background-color: color.adjust(vars.$text, $alpha: -0.55);
+    // padding: 0px 4px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 9px;
+    min-width: 1rem;
+    min-height: 1rem;
+
+    transition: min-width 0.25s ease-out;
+
+    &:hover {
+      background-color: color.adjust(vars.$overlay1, $alpha: -0.55);
+    }
+
+    &.active {
+      min-width: 2rem;
+      min-height: 1.15rem;
+      background-color: vars.$blue;
+
+      &:hover {
+        background-color: color.adjust(vars.$blue, $alpha: -0.3);
+      }
+    }
+  }
+}

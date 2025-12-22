@@ -1,0 +1,74 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+final_space = true
+version = 3
+console_title_template = "{{ .Shell } in {{ .Folder }}"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true 
+
+  [[blocks.segments]]
+  type = "path"
+  style = "plain"
+  template = "{{ .Path }}"
+  foreground = "blue"
+  background = "transparent"
+
+    [blocks.segments.properties]
+    style = "full"
+
+  [[blocks.segments]]
+  type = "git"
+  style = "plain"
+  background = "transparent"
+  foreground = "242"
+  template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+
+    [blocks.segments.properties]
+    branch_icon = ""
+    commit_icon = "@"
+    fetch_status = true
+
+[[blocks]]
+type = "rprompt"
+overflow = "hidden"
+
+  [[blocks.segments]]
+  type = "executiontime"
+  style = "plain"
+  foreground = "yellow"
+  background = "transparent"
+  template = "{{ .FormattedMs }}"
+
+    [blocks.segments.properties]
+    threshold = 5000
+
+[[blocks]]
+type = "prompt"
+newline = true
+alignment = "left"
+
+  [[blocks.segments]]
+  type = "text"
+  style = "plain"
+  template = "❯"
+  background = "transparent"
+  foreground_templates = [
+    "{{if gt .Code 0}}red{{end}}",
+    "{{if eq .Code 0}}magenta{{end}}",
+  ]
+
+[secondary_prompt]
+background = "transparent"
+foreground = "5"
+template = "❯❯"
+
+[transient_prompt]
+foreground_templates = [
+  "{{if gt .Code 0}}red{{end}}",
+  "{{if eq .Code 0}}magenta{{end}}",
+]
+background = "transparent"
+template = "❯ "
+

@@ -1,0 +1,19 @@
+@use "../variables" as vars;
+
+.powerIconButton {
+  all: unset;
+  background-color: vars.$base;
+  border: none;
+  padding: 4px 4px;
+  min-width: 25px;
+  min-height: 25px;
+  border-radius: vars.$radius;
+
+  image {
+    color: vars.$text;
+  }
+
+  &:hover {
+    background-color: vars.$mantle;
+  }
+}

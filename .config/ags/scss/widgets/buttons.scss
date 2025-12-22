@@ -1,0 +1,27 @@
+@use "../variables" as vars;
+
+.iconButton {
+  all: unset;
+  background-color: vars.$base;
+  color: vars.$blue;
+  padding: 4px;
+  border: none;
+  min-width: 25px;
+  border-radius: vars.$radius;
+
+  &:hover {
+    background-color: vars.$mantle;
+  }
+}
+
+.trayButton {
+  all: unset;
+  background-color: vars.$base;
+  color: vars.$text;
+  border: none;
+  border-radius: vars.$radius;
+ 
+  &:hover {
+    background-color: vars.$mantle;
+  }
+}
