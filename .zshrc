@@ -11,7 +11,7 @@ if [ ! -d $ZINIT_HOME ]; then
 fi
 
 # Add local bin to path
-export PATH=$PATH:/home/luis/.local/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
@@ -92,9 +92,9 @@ alias vim="nvim"
 eval "$(fzf --zsh)"
 
 # fnm
-FNM_PATH="/home/luis/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/luis/.local/share/fnm:$PATH"
+  export PATH="$HOME/.local/share/fnm:$PATH"
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
@@ -108,5 +108,16 @@ alias ls='eza --icons --color=auto --group-directories-first'
 alias ll='eza -l --icons --color=auto --group-directories-first'
 alias la='eza -la --icons --color=auto --group-directories-first'
 
+# esp-rs
+alias get_esprs=". $HOME/export-esp.sh"
+
 # deno
-. "/home/luis/.deno/env"
+. "$HOME/.deno/env"
+
+complete -o nospace -C /opt/opentofu/tofu tofu
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
