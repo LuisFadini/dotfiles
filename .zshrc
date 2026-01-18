@@ -114,6 +114,7 @@ alias get_esprs=". $HOME/export-esp.sh"
 # deno
 . "$HOME/.deno/env"
 
+autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/opentofu/tofu tofu
 
 # The next line updates PATH for the Google Cloud SDK.

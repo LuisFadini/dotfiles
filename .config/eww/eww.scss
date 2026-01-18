@@ -1,0 +1,186 @@
+* {
+  all: unset;
+}
+
+$rosewater: #f2d5cf;
+$flamingo: #eebebe;
+$pink: #f4b8e4;
+$mauve: #ca9ee6;
+$red: #e78284;
+$maroon: #ea999c;
+$peach: #ef9f76;
+$yellow: #e5c890;
+$green: #a6d189;
+$teal: #81c8be;
+$sky: #99d1db;
+$sapphire: #85c1dc;
+$blue: #8caaee;
+$lavender: #babbf1;
+$text: #c6d0f5;
+$subtext1: #b5bfe2;
+$subtext0: #a5adce;
+$overlay2: #949cbb;
+$overlay1: #838ba7;
+$overlay0: #737994;
+$surface2: #626880;
+$surface1: #51576d;
+$surface0: #414559;
+$base: #303446;
+$mantle: #292c3c;
+$crust: #232634;
+
+window.topbar {
+  background-color: transparent;
+  font-family: "Hack Nerd Font", monospace;
+}
+
+tooltip {
+  padding: 1px 7px;
+  background-color: $base;
+  border: 2px solid $blue;
+  border-radius: 5px;
+  font-size: 14px;
+  color: $text;
+}
+
+.eww_topbar {
+  color: $text;
+  min-height: 30px;
+
+  margin: 0 6px;
+  color: $text;
+
+  .clock {
+    background-color: $base;
+    padding: 4px 10px;
+    min-height: 25px;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .workspaces {
+    background-color: $base;
+    padding: 4px 10px;
+    min-width: 30px;
+    min-height: 25px;
+    border: 2px solid $blue;
+    border-radius: 5px;
+
+    .workspace {
+      margin: 0 4px;
+      .icon {
+        font-size: 18px;
+      }
+
+      &.active {
+        color: $blue;
+      }
+
+      &:hover:not(.active) {
+        color: $overlay1;
+      }
+
+      &:nth-child(0),
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .utilities {
+    background-color: $base;
+    padding: 4px 10px;
+    min-height: 25px;
+    border: 2px solid $blue;
+    border-radius: 5px;
+
+    .icon {
+      font-size: 18px;
+      margin: 0 4px;
+    }
+
+    .power {
+      * {
+        margin: 0 6px 0 4px;
+      }
+
+      &:hover {
+        color: $red;
+      }
+    }
+
+    .battery {
+      &.low {
+        color: $yellow;
+      }
+
+      &.critical {
+        color: $red;
+      }
+    }
+  }
+
+  // .utilities {
+  //   background-color: $base;
+  //   padding: 4px 10px;
+  //   min-width: 30px;
+  //   min-height: 25px;
+  //   border: 2px solid $blue;
+  //   border-radius: 5px;
+
+  //   .brightness {
+  //     .icon {
+  //       font-size: 18px;
+  //       padding: 0 2px;
+  //     }
+  //     .label {
+  //       margin-left: 4px;
+  //       font-size: 14px;
+  //     }
+  //   }
+
+  //   .volume {
+  //     .icon {
+  //       font-size: 18px;
+  //     }
+  //     .label {
+  //       margin-left: 4px;
+  //       font-size: 14px;
+  //     }
+  //   }
+
+  //   .battery {
+  //     .icon {
+  //       font-size: 18px;
+  //     }
+  //     .label {
+  //       margin-left: 4px;
+  //       font-size: 14px;
+  //     }
+
+  //     &.low {
+  //       color: $yellow;
+  //     }
+
+  //     &.critical {
+  //       color: $red;
+  //     }
+  //   }
+
+  //   .power {
+  //     padding: 0px 0px;
+  //     min-width: 18px;
+  //     min-height: 18px;
+  //     .icon {
+  //       font-size: 18px;
+  //     }
+
+  //     &:hover {
+  //       color: $overlay1;
+  //     }
+  //   }
+  // }
+}
+

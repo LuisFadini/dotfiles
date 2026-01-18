@@ -1,0 +1,128 @@
+(defpoll time :interval "10s" "date +%H:%M")
+
+(defwidget clock []
+  (box
+    :class "clock"
+    :orientation "horizontal"
+    :valign "center"
+    :halign "center"
+    time
+  ))
+
+(deflisten workspaces :initial '{ "eDP-1": [] }' "./scripts/workspaces.py")
+
+(defwidget workspaces [monitor]
+  (box
+    :orientation "h"
+    :class "workspaces"
+    :valign "center"
+    :halign "start"
+    :hexpand "true"
+    :spacing 5
+    (for wsp in {workspaces[monitor]}
+      (button :class "workspace ${wsp.class}" :onclick "hyprctl dispatch workspace ${wsp.name}"
+        (box
+          (label :class "icon" :text "${wsp.icon}" ))))))
+
+
+(deflisten backlight :initial '{ "brightness": "0" }' "./scripts/brightness.sh")
+
+(defwidget brightness []
+  (box
+    :class "brightness"
+    :space-evenly false
+    (label
+      :class "icon"
+      :tooltip "Brightness is at ${backlight.brightness}%"
+      :text "${
+      backlight.brightness > 80 ? ''
+      : backlight.brightness > 70 ? ''
+      : backlight.brightness > 60 ? ''
+      : backlight.brightness > 50 ? ''
+      : backlight.brightness > 40 ? ''
+      : backlight.brightness > 30 ? ''
+      : backlight.brightness > 20 ? ''
+      : backlight.brightness > 10 ? ''
+      : ''
+    }")))
+
+(deflisten speakers :initial '{ "volume": "0", "muted": "false" }' "./scripts/volume.sh")
+
+(defwidget volume []
+  (box
+    :class "volume"
+    :space-evenly false
+    (eventbox
+      :cursor "pointer"
+      :tooltip "${speakers.muted ? 'Muted' : 'Volume is at ${speakers.volume}%'}"
+      :onclick "pactl -- set-sink-mute @DEFAULT_SINK@ toggle"
+      (box
+        :class "icon"
+        "${speakers.muted ? '󰝟'
+        : speakers.volume >= 70 ? '󰕾'
+        : speakers.volume >= 30 ? '󰖀'
+      : '󰕿'}" ))))
+
+(defwidget battery []
+  (box
+    :class "battery ${ EWW_BATTERY["BAT1"].capacity <= 10 ? 'critical' : EWW_BATTERY["BAT1"].capacity <= 30 ? 'low' : '' }"
+    :space-evenly false
+    (label
+      :class "icon"
+      :tooltip "Battery is at ${EWW_BATTERY["BAT1"].capacity}%"
+      :text "${ EWW_BATTERY['BAT1'].status == 'Charging' ? ''
+      : EWW_BATTERY['BAT1'].capacity > 95 ? '󰁹'
+      : EWW_BATTERY['BAT1'].capacity > 90 ? '󰂂'
+      : EWW_BATTERY['BAT1'].capacity > 80 ? '󰂁'
+      : EWW_BATTERY['BAT1'].capacity > 70 ? '󰂀'
+      : EWW_BATTERY['BAT1'].capacity > 60 ? '󰁿'
+      : EWW_BATTERY['BAT1'].capacity > 50 ? '󰁾'
+      : EWW_BATTERY['BAT1'].capacity > 40 ? '󰁽'
+      : EWW_BATTERY['BAT1'].capacity > 30 ? '󰁼'
+      : EWW_BATTERY['BAT1'].capacity > 20 ? '󰁻'
+      : EWW_BATTERY['BAT1'].capacity > 10 ? '󰁺'
+    : '󰂎'}")))
+
+(defwidget utilities []
+  (box
+    :orientation "h"
+    :class "utilities"
+    :valign "center"
+    :halign "end"
+    :space-evenly false
+    :spacing 10
+    (brightness)
+    (volume)
+    (battery)
+    (eventbox
+      :class "power"
+      :cursor "pointer"
+      :onclick "./scripts/powermenu.sh &"
+      (label :class "icon" :text "\\uf011"))
+  )
+)
+
+(defwidget bar []
+  (centerbox
+    :class "eww_topbar"
+    :orientation "h"
+    (workspaces :monitor "eDP-1")
+    (clock)
+    (utilities)
+  )
+)
+
+(defwindow topbar
+  :monitor 0
+  :geometry (geometry :x "0%"
+    :y "5px"
+    :width "1910px"
+    :height "30px"
+    :anchor "top center"
+  )
+  :stacking "fg"
+  :reserve (struts :distance "35px" :side "top")
+  :windowtype "dock"
+  :exclusive true
+  :wm-ignore false
+  (bar))
