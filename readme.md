@@ -1,16 +1,18 @@
+> [!IMPORTANT]
+> This readme is outdated and my dotfiles are changing very frequently, so no documentation is provided currently, use at your own risk
+
 # My Dotfiles
 
 This repository contains the dotfiles for my Arch Linux setup, featuring custom configurations for various software and tools I use.
 
 ## Included Configurations
 
-- [Hyprland](https://hyprland.org)
-- [Hyprpaper](https://wiki.hyprland.org/Hypr-Ecosystem/hyprpaper)
-- [Hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock)
-- [Hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/hypridle)
+- [Hyprland](https://hypr.land)
+- [Hyprpaper](https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper)
+- [Hyprlock](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock)
+- [Hypridle](https://wiki.hypr.land/Hypr-Ecosystem/hypridle)
 - [Ghostty](https://ghostty.org)
 - [Wofi](https://hg.sr.ht/~scoopta/wofi)
-- [Wlogout](https://github.com/ArtsyMacaw/wlogout)
 - [Waybar](https://github.com/Alexays/Waybar)
 - [Neovim](https://github.com/neovim/neovim)
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
@@ -29,6 +31,4 @@ Here are some screenshots showcasing the configurations:
   
 - **With some apps open**  
   ![With some apps open](./screenshots/apps.png)
-  
-- **Wlogout Screen**  
-  ![Wlogout](./screenshots/wlogout.png)
+
