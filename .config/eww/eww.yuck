@@ -95,6 +95,11 @@
     (volume)
     (battery)
     (eventbox
+      :class "notifications"
+      :cursor "pointer"
+      :onclick "swaync-client --open-panel"
+      (label :class "icon" :text ""))
+    (eventbox
       :class "power"
       :cursor "pointer"
       :onclick "./scripts/powermenu.sh &"

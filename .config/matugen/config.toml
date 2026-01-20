@@ -1,9 +1,15 @@
 [config]
-fallback_color = "#8caaee"
+fallback_color = '#8caaee'
 
 [config.wallpaper]
-command = "swww"
-arguments = ["img", "--transition-type", "grow", "--transition-pos", "0.894,0.960"]
+arguments = [
+  'img',
+  '--transition-type',
+  'grow',
+  '--transition-pos',
+  '0.894,0.960',
+]
+command = 'swww'
 set = true
 
 [templates.hyprland]
@@ -24,9 +30,32 @@ post_hook = 'pkill -USR2 btop'
 [templates.spotify]
 input_path = 'templates/spicetify-colors.ini'
 output_path = '~/dotfiles/.config/spicetify/Themes/Sleek/color.ini'
-post_hook = "spicetify refresh"
+post_hook = 'spicetify refresh'
 
 [templates.eww]
 input_path = 'templates/eww-colors.scss'
 output_path = '~/dotfiles/.config/eww/theme.scss'
-post_hook = "eww reload"
+post_hook = 'eww reload'
+
+[templates.gtk3]
+input_path = 'templates/gtk-colors.css'
+output_path = '~/dotfiles/.config/gtk-3.0/gtk.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = 'templates/gtk-colors.css'
+output_path = '~/dotfiles/.config/gtk-4.0/gtk.css'
+
+[templates.pywalfox]
+input_path = 'templates/pywalfox-colors.json'
+output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
+
+[templates.rofi]
+input_path = 'templates/rofi-colors.rasi'
+output_path = '~/dotfiles/.config/rofi/colors.rasi'
+
+[templates.ghostty]
+input_path = 'templates/ghostty-colors'
+output_path = '~/dotfiles/.config/ghostty/themes/Matugen'
+post_hook = 'pkill -SIGUSR2 ghostty'

@@ -1,0 +1,41 @@
+@import "base.rasi"
+
+configuration {
+    modi:                   "drun";
+    show-icons:             true;
+    display-drun:           "APPS";
+    drun-display-format:    "{name}";
+    kb-move-front:          "";
+    kb-remove-to-sol:       "Control+a";
+    scroll-method:          1;
+}
+
+textbox-prompt-colon {
+    str:                    " ";
+    text-color:             @primary;
+}
+
+entry {
+    placeholder:            "Search applications…";
+}
+
+listview {
+    enabled:                true;
+    sort:                   true;
+    columns:                1;
+    lines:                  10;
+    fixed-height:           true;
+    fixed-columns:          true;
+    dynamic:                true;
+    cycle:                  true;
+    scrollbar:              true;
+    spacing:                10px;
+}
+
+element {
+    padding:                6px;
+}
+
+element-icon {
+    size:                   32px;
+}

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# --------------------------------------------------
+# Configuration
+# --------------------------------------------------
+WALLDIR="$HOME/Pictures/wallpapers"
+ROFI_THEME="$HOME/.config/rofi/config-wallpaper.rasi"
+
+# Supported image extensions
+EXTS=(jpg jpeg png webp)
+
+# --------------------------------------------------
+# Generate wallpaper list for rofi
+# --------------------------------------------------
+generate_list() {
+    shopt -s nullglob
+    for ext in "${EXTS[@]}"; do
+        for img in "$WALLDIR"/*."$ext"; do
+            name="$(basename "$img")"
+            printf "%s\x00icon\x1f%s\n" "$name" "$img"
+        done
+    done
+}
+
+# --------------------------------------------------
+# Show rofi and get selection
+# --------------------------------------------------
+selection="$(generate_list | rofi \
+    -dmenu \
+    -i \
+    -show-icons \
+    -theme $ROFI_THEME
+)"
+
+# --------------------------------------------------
+# Exit if nothing selected
+# --------------------------------------------------
+[ -z "$selection" ] && exit 0
+
+# --------------------------------------------------
+# Resolve selected image path
+# --------------------------------------------------
+image_path="$WALLDIR/$selection"
+
+if [ ! -f "$image_path" ]; then
+    notify-send "Wallpaper selector" "File not found:\n$image_path"
+    exit 1
+fi
+
+# --------------------------------------------------
+# Run matugen
+# --------------------------------------------------
+matugen image "$image_path" --type scheme-content

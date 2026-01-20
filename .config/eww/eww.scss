@@ -13,7 +13,7 @@ window.topbar {
 
 tooltip {
   padding: 1px 7px;
-  background-color: $background;
+  background-color: $surface_container_highest;
   border: 2px solid $primary;
   border-radius: $border_radius;
   font-size: 14px;
@@ -78,14 +78,15 @@ tooltip {
       margin: 0 4px;
     }
 
+    .notifications,
     .power {
       * {
         margin: 0 6px 0 4px;
       }
+    }
 
-      &:hover {
-        color: $error;
-      }
+    .power:hover {
+      color: $error;
     }
 
     .battery {

@@ -1,0 +1,53 @@
+@import "base.rasi"
+
+* {
+    font:                    "Hack Nerd Font 13";
+}
+
+configuration {
+    modi:                   "dmenu";
+    show-icons:             false;
+    scroll-method:          0;
+    kb-move-front:          "";
+    kb-remove-to-sol:       "Control+a";
+    kb-accept-entry:        "Return";
+    kb-cancel:              "Escape";
+}
+
+mainbox {
+    orientation:            vertical;
+    children:               [ "listbox" ];
+}
+
+listbox {
+    expand:                 true;
+}
+
+listview {
+    columns:                5;
+    lines:                  1;
+    fixed-columns:          true;
+    fixed-height:           true;
+    dynamic:                false;
+    scrollbar:              false;
+    spacing:                14px;
+}
+
+element {
+    padding:                18px 12px;
+    background-color:       @surface-container;
+}
+
+element normal.active {
+    background-color:       @surface-container-high;
+}
+
+element selected.normal {
+    background-color:       @primary;
+    text-color:             @on-primary;
+}
+
+element-text {
+    vertical-align:         0.5;
+    horizontal-align:       0.5;
+}

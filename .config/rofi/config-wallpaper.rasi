@@ -1,0 +1,41 @@
+@import "base.rasi"
+
+configuration {
+    modi:                   "dmenu";
+    show-icons:             true;
+    display-dmenu:          "WALLPAPERS";
+    kb-move-front:          "";
+    kb-remove-to-sol:       "Control+a";
+    scroll-method:          1;
+}
+
+textbox-prompt-colon {
+    str:                    "󰋫 ";
+    text-color:             @primary;
+}
+
+entry {
+    placeholder:            "Search wallpapers…";
+}
+
+listview {
+    enabled:                true;
+    sort:                   true;
+    columns:                1;
+    lines:                  4;
+    fixed-height:           true;
+    dynamic:                true;
+    cycle:                  true;
+    scrollbar:              true;
+    spacing:                12px;
+}
+
+element {
+    padding:                14px;
+    min-height:             96px;
+}
+
+element-icon {
+    size:                   100px;
+    border-radius:          14px;
+}

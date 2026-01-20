@@ -45,7 +45,8 @@
 shell-integration = zsh
 shell-integration-features = cursor,sudo,title
 
-theme = Catppuccin Frappe
+# theme = Catppuccin Frappe 
+theme = "Matugen"
 font-family = Hack Nerd Font
 font-size = 10.0
 

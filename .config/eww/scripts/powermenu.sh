@@ -1,33 +1,35 @@
 #!/usr/bin/env bash
 
-options=(
-  "  Lock"
-  "󰍃  Logout"
-  "󰒲  Suspend"
-  "  Shutdown"
-  "  Reboot"
-)
+lock="  Lock"
+logout="󰍃  Logout"
+suspend="󰒲  Suspend"
+shutdown="  Shutdown"
+reboot="  Reboot"
 
-choice=$(printf '%s\n' "${options[@]}" | wofi \
-  -dmenu \
-  -p "Power" \
-  -j \
-  -m)
+choice=$(
+  printf "%s\n%s\n%s\n%s\n%s\n" \
+    "$lock" "$logout" "$suspend" "$reboot" "$shutdown" |
+  rofi -dmenu -theme $HOME/.config/rofi/config-powermenu.rasi
+  )
+
+[ -z "$choice" ] && exit 0
+
+sleep 0.2
 
 case "$choice" in
-  *Lock*)
+  "$lock")
     loginctl lock-session
     ;;
-  *Logout*)
+  "$logout")
     loginctl terminate-user "$USER"
     ;;
-  *Suspend*)
+  "$suspend")
     systemctl suspend
     ;;
-  *Shutdown*)
+  "$shutdown")
     systemctl poweroff
     ;;
-  *Reboot*)
+  "$reboot")
     systemctl reboot
     ;;
 esac

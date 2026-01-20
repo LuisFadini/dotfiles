@@ -1,0 +1,93 @@
+@theme "./colors.rasi"
+
+* {
+    font:                    "Hack Nerd Font 11";
+    background-color:        transparent;
+    text-color:              @on-surface;
+}
+
+window {
+    transparency:           "real";
+    location:               center;
+    anchor:                 center;
+    fullscreen:             false;
+    border:                 2px;
+    border-radius:          16px;
+    border-color:           @primary;
+    background-color:       @surface-container-highest;
+}
+
+mainbox {
+    enabled:                true;
+    orientation:            horizontal;
+    background-color:       transparent;
+    children:               [ "imagebox", "listbox" ];
+}
+
+imagebox {
+    padding:                20px;
+    spacing:                20px;
+    background-color:       @surface-container;
+
+    background-image:       @image;
+    background-position:    center;
+    orientation:            vertical;
+    children:               [ "inputbar" ];
+}
+
+inputbar {
+    enabled:                true;
+    spacing:                10px;
+    padding:                14px;
+    border:                 2px;
+    border-radius:          12px;
+    border-color:           @primary;
+    background-color:       @surface-container-high;
+    text-color:             @on-surface;
+    children:               [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    expand:                 false;
+}
+
+entry {
+    enabled:                true;
+    cursor:                 text;
+    background-color:       transparent;
+    text-color:             inherit;
+}
+
+listbox {
+    spacing:                20px;
+    padding:                20px;
+    background-color:       transparent;
+    orientation:            vertical;
+    children:               [ "listview" ];
+}
+
+scrollbar {
+    handle-width:           6px;
+    handle-color:           @primary;
+    background-color:       @surface-container-low;
+    border-radius:          10px;
+}
+
+element {
+    enabled:                true;
+    border-radius:          12px;
+    background-color:       transparent;
+    text-color:             @on-surface;
+    cursor:                 pointer;
+}
+
+element selected.normal {
+    background-color:       @primary-container;
+    text-color:             @on-primary-container;
+}
+
+element-text {
+    vertical-align:         0.5;
+    horizontal-align:       0.0;
+    text-color:             inherit;
+}
