@@ -52,3 +52,5 @@ fi
 # Run matugen
 # --------------------------------------------------
 matugen image "$image_path" --type scheme-content
+
+notify-send "Wallpaper updated" -a "Matugen" -u "low" -i "$image_path"

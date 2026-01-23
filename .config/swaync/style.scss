@@ -102,7 +102,7 @@ blankwindow {
 
           .image {
             -gtk-icon-size: $icon_size;
-            border-radius: 100px;
+            border-radius: $border_radius;
             margin: 4px;
           }
 

@@ -67,7 +67,7 @@ blankwindow {
 }
 .notification-row .notification-background .notification .notification-default-action .notification-content .image {
   -gtk-icon-size: 64px;
-  border-radius: 100px;
+  border-radius: 5px;
   margin: 4px;
 }
 .notification-row .notification-background .notification .notification-default-action .notification-content .app-icon {
