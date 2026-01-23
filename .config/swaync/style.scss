@@ -1,0 +1,359 @@
+// ==================================================
+// Variables
+// ==================================================
+
+@use "./theme.scss" as *;
+
+$border_radius: 5px;
+$default_bg: rgba($surface_container_highest, 0.9);
+
+$icon_size: 64px;
+
+$hover_transition: background 0.15s ease-in-out;
+$group_collapse_transition: opacity 400ms ease-in-out;
+
+// ==================================================
+// Base windows
+// ==================================================
+
+notificationwindow,
+blankwindow {
+  background: transparent;
+}
+
+// ==================================================
+// Close button
+// ==================================================
+
+.close-button {
+  background: $error_container;
+  color: $on_surface;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 100%;
+  margin: 8px;
+  box-shadow: none;
+  border: none;
+  min-width: 8px;
+  min-height: 8px;
+
+  &:hover {
+    box-shadow: none;
+    border-radius: 100%;
+    color: $error_container;
+    background: $on_error_container;
+    border: none;
+  }
+}
+
+// ==================================================
+// Notifications
+// ==================================================
+
+.notification-row {
+  background: none;
+  outline: none;
+
+  &:focus {
+    background: rgba($surface_container_high, 0.9);
+  }
+
+  .notification-background {
+    padding: 4px 4px 0 0;
+
+    .notification {
+      border-radius: $border_radius;
+      border: 2px solid $primary;
+      padding: 0;
+      transition: $hover_transition;
+      background: $default_bg;
+
+      &.low {
+      }
+      &.normal {
+      }
+      &.critical {
+        border: 2px solid $error_container;
+      }
+
+      .notification-default-action {
+        padding: 4px;
+        margin: 0;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        color: $on_surface;
+        transition: $hover_transition;
+        border-radius: $border_radius;
+
+        &:hover {
+          background: $surface_container_high;
+        }
+
+        &:not(:only-child) {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        .notification-content {
+          background: transparent;
+          border-radius: $border_radius;
+          padding: 0;
+
+          .image {
+            -gtk-icon-size: $icon_size;
+            border-radius: 100px;
+            margin: 4px;
+          }
+
+          .app-icon {
+            -gtk-icon-size: calc($icon_size / 3);
+            -gtk-icon-shadow: 0 1px 4px black;
+            margin: 6px;
+          }
+
+          .text-box {
+            label {
+              filter: none;
+            }
+
+            .summary {
+              font-size: 16px;
+              font-weight: bold;
+              color: $on_surface;
+            }
+
+            .time {
+              font-size: 16px;
+              font-weight: bold;
+              color: $on_surface;
+              margin-right: 30px;
+            }
+
+            .body {
+              font-size: 15px;
+              color: $on_surface;
+            }
+          }
+
+          progressbar {
+            margin-top: 4px;
+          }
+
+          .body-image {
+            margin-top: 4px;
+            background-color: white;
+          }
+
+          .inline-reply {
+            margin-top: 4px;
+
+            &-entry {
+              background: $surface_container;
+              color: $on_surface;
+              caret-color: $on_surface;
+              border: 2px solid $primary;
+              border-radius: $border_radius;
+            }
+
+            &-button {
+              margin-left: 4px;
+              background: $default_bg;
+              border: 2px solid $primary;
+              border-radius: $border_radius;
+              color: $on_surface;
+
+              &:hover {
+                background: $surface_container_high;
+              }
+
+              &:disabled {
+                background: none;
+                color: $on_surface_variant;
+                border-color: transparent;
+              }
+            }
+          }
+        }
+      }
+
+      .notification-alt-actions {
+        background: none;
+        border-bottom-left-radius: $border_radius;
+        border-bottom-right-radius: $border_radius;
+        padding: 4px;
+      }
+
+      .notification-action {
+        margin: 4px;
+        padding: 0;
+
+        > button {
+          border-radius: $border_radius;
+          color: $on_surface;
+        }
+      }
+    }
+  }
+}
+
+// ==================================================
+// Notification groups
+// ==================================================
+
+.notification-group {
+  transition: opacity 200ms ease-in-out;
+
+  &:focus {
+    background: $surface_container_high;
+  }
+
+  &.collapsed {
+    background: transparent;
+
+    .notification-row {
+      .notification {
+        background: $default_bg;
+      }
+
+      &:not(:last-child) {
+        .notification-action,
+        .notification-default-action {
+          opacity: 0;
+        }
+      }
+    }
+
+    &:hover .notification {
+      background: $surface_container_high;
+    }
+  }
+
+  .notification-group-close-button {
+    .close-button {
+      margin: 12px 20px;
+    }
+  }
+
+  .notification-group-buttons,
+  .notification-group-headers {
+    margin: 0 16px;
+    color: $on_surface;
+  }
+
+  .notification-group-headers {
+    .notification-group-icon {
+      -gtk-icon-size: 32px;
+    }
+  }
+}
+
+// ==================================================
+// Control center
+// ==================================================
+
+.control-center {
+  background: $default_bg;
+  color: $on_surface;
+  border-radius: $border_radius;
+  border: 2px solid $primary;
+
+  .control-center-list-placeholder {
+    opacity: 0.5;
+  }
+
+  .control-center-list {
+    background: transparent;
+
+    .notification {
+      box-shadow: $shadow;
+
+      .notification-default-action,
+      .notification-action {
+        transition: $group_collapse_transition, $hover_transition;
+
+        &:hover {
+          background-color: rgba($surface_container_high, 0.9);
+        }
+      }
+    }
+  }
+}
+
+// ==================================================
+// Floating notifications
+// ==================================================
+
+.floating-notifications {
+  background: transparent;
+
+  .notification {
+    box-shadow: none;
+  }
+}
+
+// ==================================================
+// Widgets
+// ==================================================
+
+.widget {
+  margin: 8px;
+  padding: 8px;
+  border-radius: $border_radius;
+}
+
+// Title widget
+.widget-title {
+  > label {
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  > button {
+    margin-left: 8px;
+    border-radius: $border_radius;
+  }
+}
+
+// DND widget
+.widget-dnd {
+  label {
+    color: $on_surface;
+    margin-right: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  switch {
+    background: $surface_variant;
+    border-radius: $border_radius;
+    margin-left: 8px;
+
+    slider {
+      border-radius: $border_radius;
+      background: $on_surface;
+    }
+
+    &:checked {
+      background: $on_error;
+
+      slider {
+        background-color: $on_error_container;
+      }
+    }
+  }
+}
+
+// Label widget
+.widget-label > label {
+  font-size: 1.1rem;
+}
+
+// ==================================================
+// Slider widget
+// ==================================================
+
+.widget-slider label {
+  font-size: inherit;
+}

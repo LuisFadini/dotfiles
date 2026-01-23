@@ -59,3 +59,8 @@ output_path = '~/dotfiles/.config/rofi/colors.rasi'
 input_path = 'templates/ghostty-colors'
 output_path = '~/dotfiles/.config/ghostty/themes/Matugen'
 post_hook = 'pkill -SIGUSR2 ghostty'
+
+[templates.swaync]
+input_path = 'templates/swaync-colors.scss'
+output_path = '~/dotfiles/.config/swaync/theme.scss'
+post_hook = '~/dotfiles/.config/swaync/update-config'

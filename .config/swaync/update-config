@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+sass $HOME/dotfiles/.config/swaync/style.scss $HOME/dotfiles/.config/swaync/style.css --no-source-map
+swaync-client --reload-css
