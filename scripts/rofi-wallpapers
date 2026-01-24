@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# --------------------------------------------------
 # Configuration
-# --------------------------------------------------
 WALLDIR="$HOME/Pictures/wallpapers"
 ROFI_THEME="$HOME/.config/rofi/config-wallpaper.rasi"
-
-# Supported image extensions
 EXTS=(jpg jpeg png webp)
 
-# --------------------------------------------------
-# Generate wallpaper list for rofi
-# --------------------------------------------------
-generate_list() {
+generate_wallpaper_list() {
     shopt -s nullglob
     for ext in "${EXTS[@]}"; do
         for img in "$WALLDIR"/*."$ext"; do
@@ -23,24 +16,15 @@ generate_list() {
     done
 }
 
-# --------------------------------------------------
-# Show rofi and get selection
-# --------------------------------------------------
-selection="$(generate_list | rofi \
+selection="$(generate_wallpaper_list | rofi \
     -dmenu \
     -i \
     -show-icons \
     -theme $ROFI_THEME
 )"
 
-# --------------------------------------------------
-# Exit if nothing selected
-# --------------------------------------------------
 [ -z "$selection" ] && exit 0
 
-# --------------------------------------------------
-# Resolve selected image path
-# --------------------------------------------------
 image_path="$WALLDIR/$selection"
 
 if [ ! -f "$image_path" ]; then
@@ -48,9 +32,6 @@ if [ ! -f "$image_path" ]; then
     exit 1
 fi
 
-# --------------------------------------------------
-# Run matugen
-# --------------------------------------------------
 matugen image "$image_path" --type scheme-content
 
 notify-send "Wallpaper updated" -a "Matugen" -u "low" -i "$image_path"
