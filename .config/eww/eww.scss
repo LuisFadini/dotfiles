@@ -23,9 +23,7 @@ tooltip {
 .eww_topbar {
   color: $on_background;
   min-height: 30px;
-
   margin: 0 6px;
-  color: $on_background;
 
   .clock {
     background-color: $surface_container_highest;
@@ -73,6 +71,18 @@ tooltip {
     border: 2px solid $primary;
     border-radius: $border_radius;
 
+    scale trough {
+      min-width: 100px;
+      min-height: 10px;
+      border-radius: $border_radius;
+      background-color: $surface_container_lowest;
+      
+      highlight {
+        background-color: $on_background;
+        border-radius: $border_radius;
+      }
+    }
+
     .icon {
       font-size: 18px;
       margin: 0 4px;
@@ -92,10 +102,18 @@ tooltip {
     .battery {
       &.low {
         color: $tertiary_fixed;
+
+        scale trough highlight {
+          background-color: $tertiary_fixed;
+        }
       }
 
       &.critical {
         color: $error_container;
+
+        scale trough highlight {
+          background-color: $error_container;
+        }
       }
     }
   }

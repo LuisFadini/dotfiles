@@ -28,60 +28,125 @@
 (deflisten backlight :initial '{ "brightness": "0" }' "./scripts/brightness.sh")
 
 (defwidget brightness []
-  (box
-    :class "brightness"
-    :space-evenly false
-    (label
-      :class "icon"
-      :tooltip "Brightness is at ${backlight.brightness}%"
-      :text "${
-      backlight.brightness > 80 ? ''
-      : backlight.brightness > 70 ? ''
-      : backlight.brightness > 60 ? ''
-      : backlight.brightness > 50 ? ''
-      : backlight.brightness > 40 ? ''
-      : backlight.brightness > 30 ? ''
-      : backlight.brightness > 20 ? ''
-      : backlight.brightness > 10 ? ''
-      : ''
-    }")))
+  (eventbox
+    :class "brightness ${
+    backlight.brightness <= 10 ? 'critical'
+    : backlight.brightness <= 30 ? 'low'
+    : ''
+    }"
+    :onhover "eww update bright=true"
+    :onhoverlost "eww update bright=false"
+    (box
+      :space-evenly false
+      (label
+        :class "icon"
+        :tooltip "Brightness is at ${backlight.brightness}%"
+        :text "${
+        backlight.brightness > 80 ? ''
+        : backlight.brightness > 70 ? ''
+        : backlight.brightness > 60 ? ''
+        : backlight.brightness > 50 ? ''
+        : backlight.brightness > 40 ? ''
+        : backlight.brightness > 30 ? ''
+        : backlight.brightness > 20 ? ''
+        : backlight.brightness > 10 ? ''
+        : ''
+        }"
+      )
+      (revealer
+        :transition "slideleft"
+        :reveal bright
+        :duration "300ms"
+        (scale
+          :orientation "h"
+          :min 0
+          :max 100
+          :value "${backlight.brightness}"
+          :onchange "brightnessctl set {}%"
+        )
+      )
+    )
+  )
+)
+(defvar bright false)
 
 (deflisten speakers :initial '{ "volume": "0", "muted": "false" }' "./scripts/volume.sh")
 
 (defwidget volume []
-  (box
+  (eventbox
     :class "volume"
-    :space-evenly false
-    (eventbox
-      :cursor "pointer"
-      :tooltip "${speakers.muted ? 'Muted' : 'Volume is at ${speakers.volume}%'}"
-      :onclick "pactl -- set-sink-mute @DEFAULT_SINK@ toggle"
-      (box
-        :class "icon"
-        "${speakers.muted ? '󰝟'
-        : speakers.volume >= 70 ? '󰕾'
-        : speakers.volume >= 30 ? '󰖀'
-      : '󰕿'}" ))))
+    :cursor "pointer"
+    :onhover "eww update vol=true"
+    :onhoverlost "eww update vol=false"
+    (box
+      :space-evenly false
+      (eventbox
+        :cursor "pointer"
+        :tooltip "${speakers.muted ? 'Muted' : 'Volume is at ${speakers.volume}%'}"
+        :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        (label
+          :class "icon"
+          :text "${
+          speakers.muted ? '󰝟'
+          : speakers.volume >= 70 ? '󰕾'
+          : speakers.volume >= 30 ? '󰖀'
+          : '󰕿'
+          }"
+        )
+      )
+      (revealer
+        :transition "slideleft"
+        :reveal vol
+        :duration "300ms"
+        (scale
+          :orientation "h"
+          :min 0
+          :max 100
+          :value "${speakers.volume}"
+          :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+        )
+      )
+    )
+  )
+)
+(defvar vol false)
+
 
 (defwidget battery []
-  (box
+  (eventbox
     :class "battery ${ EWW_BATTERY["BAT1"].capacity <= 10 ? 'critical' : EWW_BATTERY["BAT1"].capacity <= 30 ? 'low' : '' }"
-    :space-evenly false
-    (label
-      :class "icon"
-      :tooltip "Battery is at ${EWW_BATTERY["BAT1"].capacity}%"
-      :text "${ EWW_BATTERY['BAT1'].status == 'Charging' ? ''
-      : EWW_BATTERY['BAT1'].capacity > 95 ? '󰁹'
-      : EWW_BATTERY['BAT1'].capacity > 90 ? '󰂂'
-      : EWW_BATTERY['BAT1'].capacity > 80 ? '󰂁'
-      : EWW_BATTERY['BAT1'].capacity > 70 ? '󰂀'
-      : EWW_BATTERY['BAT1'].capacity > 60 ? '󰁿'
-      : EWW_BATTERY['BAT1'].capacity > 50 ? '󰁾'
-      : EWW_BATTERY['BAT1'].capacity > 40 ? '󰁽'
-      : EWW_BATTERY['BAT1'].capacity > 30 ? '󰁼'
-      : EWW_BATTERY['BAT1'].capacity > 20 ? '󰁻'
-      : EWW_BATTERY['BAT1'].capacity > 10 ? '󰁺'
-    : '󰂎'}")))
+    :onhover "eww update batt=true"
+    :onhoverlost "eww update batt=false"
+    (box
+      :space-evenly false
+      (label
+        :class "icon"
+        :tooltip "Battery is at ${EWW_BATTERY["BAT1"].capacity}%"
+        :text "${ EWW_BATTERY['BAT1'].status == 'Charging' ? ''
+        : EWW_BATTERY['BAT1'].capacity > 95 ? '󰁹'
+        : EWW_BATTERY['BAT1'].capacity > 90 ? '󰂂'
+        : EWW_BATTERY['BAT1'].capacity > 80 ? '󰂁'
+        : EWW_BATTERY['BAT1'].capacity > 70 ? '󰂀'
+        : EWW_BATTERY['BAT1'].capacity > 60 ? '󰁿'
+        : EWW_BATTERY['BAT1'].capacity > 50 ? '󰁾'
+        : EWW_BATTERY['BAT1'].capacity > 40 ? '󰁽'
+        : EWW_BATTERY['BAT1'].capacity > 30 ? '󰁼'
+        : EWW_BATTERY['BAT1'].capacity > 20 ? '󰁻'
+        : EWW_BATTERY['BAT1'].capacity > 10 ? '󰁺'
+      : '󰂎'}")
+      (revealer :transition "slideleft"
+        :reveal batt
+        :duration "300ms"
+        (scale
+          :orientation "h"
+          :flipped false
+          :max 100
+          :min 0
+        :value "${EWW_BATTERY['BAT1'].capacity}")
+      )
+    )
+  ))
+(defvar batt false)
 
 (defwidget utilities []
   (box
@@ -102,7 +167,7 @@
     (eventbox
       :class "power"
       :cursor "pointer"
-      :onclick "./scripts/powermenu.sh &"
+      :onclick "~/dotfiles/scripts/powermenu &"
       (label :class "icon" :text "\\uf011"))
   )
 )
