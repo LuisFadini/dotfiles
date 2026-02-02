@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+powersaver="󰌪  Power saver"
+balanced="󱕂  Balanced"
+performance="󱓞  Performance"
+
+current=$(powerprofilesctl get)
+
+case "$current" in
+  power-saver)
+    powersaver="<b>$powersaver</b>"
+    ;;
+  balanced)
+    balanced="<b>$balanced</b>"
+    ;;
+  performance)
+    performance="<b>$performance</b>"
+    ;;
+esac
+
+choice=$(
+  printf "%s\n%s\n%s\n" \
+    "$powersaver" "$balanced" "$performance" |
+  rofi -dmenu \
+    -markup-rows \
+    -theme "$HOME/.config/rofi/config-powermenu.rasi" \
+    -theme-str 'listview { lines: 1; columns: 3; fixed-columns: true; }'
+)
+
+[ -z "$choice" ] && exit 0
+
+choice_plain=$(sed 's/<[^>]*>//g' <<< "$choice")
+
+case "$choice_plain" in
+  *"Power saver")  target="power-saver" ;;
+  *"Balanced")     target="balanced" ;;
+  *"Performance")  target="performance" ;;
+  *) exit 0 ;;
+esac
+
+if [ "$target" != "$current" ]; then
+  powerprofilesctl set "$target"
+
+  notify-send \
+    "Power profile changed" \
+    "Now using: ${target}" \
+    -i battery
+fi

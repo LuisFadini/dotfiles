@@ -114,14 +114,16 @@
 
 (defwidget battery []
   (eventbox
-    :class "battery ${ EWW_BATTERY["BAT1"].capacity <= 10 ? 'critical' : EWW_BATTERY["BAT1"].capacity <= 30 ? 'low' : '' }"
+    :class "battery ${ EWW_BATTERY['BAT1'].capacity <= 10 ? 'critical' : EWW_BATTERY['BAT1'].capacity <= 30 ? 'low' : '' }"
+    :cursor "pointer"
+    :onclick "~/dotfiles/scripts/performance-menu &"
     :onhover "eww update batt=true"
     :onhoverlost "eww update batt=false"
     (box
       :space-evenly false
       (label
         :class "icon"
-        :tooltip "Battery is at ${EWW_BATTERY["BAT1"].capacity}%"
+        :tooltip "Battery is at ${EWW_BATTERY['BAT1'].capacity}%"
         :text "${ EWW_BATTERY['BAT1'].status == 'Charging' ? ''
         : EWW_BATTERY['BAT1'].capacity > 95 ? '󰁹'
         : EWW_BATTERY['BAT1'].capacity > 90 ? '󰂂'
