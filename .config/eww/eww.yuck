@@ -78,6 +78,7 @@
     :cursor "pointer"
     :onhover "eww update vol=true"
     :onhoverlost "eww update vol=false"
+    :onrightclick "pkill pavucontrol; pavucontrol &"
     (box
       :space-evenly false
       (eventbox
