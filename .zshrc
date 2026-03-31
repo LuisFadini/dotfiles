@@ -13,6 +13,9 @@ fi
 # Add local bin to path
 export PATH=$PATH:$HOME/.local/bin
 
+# Add go env to path
+export PATH=$PATH:`go env GOPATH`/bin
+
 # Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -50,6 +53,10 @@ fi
 
 if [ $(command -v docker) ] && [ ! -d "$COMPLETIONS_DIR/_docker" ]; then
   docker completion zsh > "$COMPLETIONS_DIR/_docker"
+fi
+
+if [ $(command -v sqlc) ] && [ ! -d "$COMPLETIONS_DIR/_sqlc" ]; then
+  sqlc completion zsh > "$COMPLETIONS_DIR/_sqlc"
 fi
 
 fpath+=$COMPLETIONS_DIR

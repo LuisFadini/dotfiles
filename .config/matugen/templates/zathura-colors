@@ -1,0 +1,17 @@
+set highlight-active-color "{{ colors.secondary.default.hex }}"
+set default-bg "{{ colors.surface.default.hex }}"
+
+set recolor false
+set guioptions "none"
+
+set pages-per-row 1
+set adjust-open "best-fit"
+
+set scroll-page-aware "true"
+set scroll-step 40
+
+set zoom-min 10
+
+set synctex true
+
+set selection-clipboard clipboard

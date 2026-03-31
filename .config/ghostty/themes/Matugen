@@ -1,6 +1,6 @@
-background = #0f1415
-foreground = #dfe3e4
-cursor-color = #dfe3e4
-cursor-text = #bdc9cb
-selection-background = #a9cdd3
-selection-foreground = #10353b
+background = #121415
+foreground = #e2e2e4
+cursor-color = #e2e2e4
+cursor-text = #c1c7cc
+selection-background = #b9c9d2
+selection-foreground = #243239

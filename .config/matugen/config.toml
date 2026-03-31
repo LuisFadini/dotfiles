@@ -47,11 +47,6 @@ post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings s
 input_path = 'templates/gtk-colors.css'
 output_path = '~/dotfiles/.config/gtk-4.0/gtk.css'
 
-[templates.pywalfox]
-input_path = 'templates/pywalfox-colors.json'
-output_path = '~/.cache/wal/colors.json'
-post_hook = 'pywalfox update'
-
 [templates.rofi]
 input_path = 'templates/rofi-colors.rasi'
 output_path = '~/dotfiles/.config/rofi/colors.rasi'
@@ -65,3 +60,9 @@ post_hook = 'pkill -SIGUSR2 ghostty'
 input_path = 'templates/swaync-colors.scss'
 output_path = '~/dotfiles/.config/swaync/theme.scss'
 post_hook = '~/dotfiles/.config/swaync/update-config'
+
+[templates.zathura]
+input_path = 'templates/zathura-colors'
+output_path = '~/dotfiles/.config/zathura/zathurarc'
+post_hook = 'pkill -USR1 zathura'
+

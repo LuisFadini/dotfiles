@@ -17,6 +17,7 @@ APP_MAP = {
     "libreoffice": "\uf376",
     "obsidian": "\uf249",
     "discord": "\uf1ff",
+    "freecad": "\uf336"
 }
 DEFAULT_ICON = "\uf10c"
 OCCUPIED_ICON = "\uf192"
