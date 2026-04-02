@@ -124,6 +124,10 @@ alias get_esprs=". $HOME/export-esp.sh"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/opentofu/tofu tofu
 
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
 
