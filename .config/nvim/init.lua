@@ -172,16 +172,19 @@ end
 
 -- Completions
 vim.pack.add({
-	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
+	"https://github.com/saghen/blink.cmp",
+	"https://github.com/L3MON4D3/LuaSnip",
 	"https://github.com/xzbdmw/colorful-menu.nvim",
 	"https://github.com/rafamadriz/friendly-snippets",
 	"https://github.com/windwp/nvim-autopairs",
 })
 require("colorful-menu").setup()
 require("nvim-autopairs").setup()
+require("luasnip").setup()
+require("luasnip.loaders.from_vscode").lazy_load()
 require("blink.cmp").setup({
 	snippets = {
-		preset = "default",
+		preset = "luasnip",
 	},
 
 	keymap = {
@@ -204,6 +207,7 @@ require("blink.cmp").setup({
 		menu = {
 			border = "rounded",
 			draw = {
+				treesitter = { "lsp" },
 				columns = { { "kind_icon" }, { "label", gap = 1 } },
 				components = {
 					label = {
@@ -288,3 +292,7 @@ vim.g.vimtex_compiler_latexmk = {
 	aux_dir = "/home/luis/.texfiles/",
 	out_dir = "/home/luis/.texfiles/",
 }
+
+--  Indention guides
+vim.pack.add({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
+require("ibl").setup()
