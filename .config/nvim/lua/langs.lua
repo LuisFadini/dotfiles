@@ -65,10 +65,14 @@ return {
 		"gopls",
 
 		"just",
+		"docker_language_server",
+		"docker_compose_language_service",
+		"terraformls",
 
 		"taplo",
 		"hyprls",
 
+		"html",
 		"cssls",
 		"emmet_ls",
 		"tailwindcss",
@@ -83,12 +87,14 @@ return {
 			"prettier",
 			"shfmt",
 			"clang-format",
+			"terraform",
 		},
 
 		linters = {
 			"ruff",
 			"eslint_d",
 			"checkmake",
+			"tflint",
 		},
 	},
 }

@@ -19,6 +19,7 @@ return {
 				".git/",
 				"/dist/",
 				"/.next/",
+				"/.terraform/"
 			}) do
 				table.insert(find_command, "-g")
 				table.insert(find_command, "!" .. d)

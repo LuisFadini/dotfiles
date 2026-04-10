@@ -106,19 +106,34 @@ local packages = merge(
 		setup = function()
 			require("ibl").setup()
 		end,
+	},
+
+	{
+		src = "windwp/nvim-ts-autotag",
+		setup = function()
+			require("nvim-ts-autotag").setup({
+				opts = {
+					enable_close = true,
+					enable_rename = true,
+					enable_close_on_slash = false,
+				},
+			})
+		end,
 	}
 )
 
 for _, pkg in ipairs(packages) do
 	local p = type(pkg) == "string" and { src = pkg } or pkg
 
-	vim.pack.add({
-		{
-			src = p.src:gsub("^gh:", "https://github.com/"):gsub("^([^:/]+/[^/]+)$", "https://github.com/%1"),
-			version = p.version,
-			confirm = false,
-		},
-	})
+	if type(p.src) == "string" then
+		vim.pack.add({
+			{
+				src = p.src:gsub("^gh:", "https://github.com/"):gsub("^([^:/]+/[^/]+)$", "https://github.com/%1"),
+				version = p.version,
+				confirm = false,
+			},
+		})
+	end
 end
 
 for _, pkg in ipairs(packages) do
