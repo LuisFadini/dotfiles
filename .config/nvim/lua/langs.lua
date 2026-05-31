@@ -88,6 +88,7 @@ return {
 			"shfmt",
 			"clang-format",
 			"terraform",
+			"bibtex-tidy",
 		},
 
 		linters = {

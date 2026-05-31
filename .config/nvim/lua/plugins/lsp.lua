@@ -59,6 +59,7 @@ return {
 				formatters_by_ft = vim.tbl_extend("force", formatters_by_ft, {
 					terraform = { "terraform_fmt" },
 					["terraform-vars"] = { "terraform_fmt" },
+					tex = { "bibtex-tidy" },
 				}),
 				formatters = vim.tbl_extend("force", formatters, {
 					terraform_fmt = {
