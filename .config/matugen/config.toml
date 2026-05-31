@@ -10,11 +10,16 @@ arguments = [
   '--transition-pos',
   '0.894,0.960',
 ]
-command = 'swww'
+command = 'awww'
 set = true
 
 [templates.hyprland]
-input_path = 'templates/hyprland-colors.conf'
+input_path = 'templates/hyprland-colors.lua'
+output_path = '~/dotfiles/.config/hypr/colors.lua'
+post_hook = 'hyprctl reload'
+
+[templates.hypr]
+input_path = 'templates/hypr-colors.conf'
 output_path = '~/dotfiles/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
