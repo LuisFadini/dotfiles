@@ -20,7 +20,7 @@
     :hexpand "true"
     :spacing 5
     (for wsp in {workspaces[monitor]}
-      (button :class "workspace ${wsp.class}" :onclick "hyprctl dispatch workspace ${wsp.name}"
+      (button :class "workspace ${wsp.class}" :onclick "hyprctl dispatch 'hl.dsp.focus({ workspace = \"${wsp.name}\" })'"
         (box
           (label :class "icon" :text "${wsp.icon}" ))))))
 
