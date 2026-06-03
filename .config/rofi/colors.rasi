@@ -1,6 +1,6 @@
 * {
-    image: url("/home/luis/Pictures/wallpapers/rosepeak.png", height);
-    image-width: url("/home/luis/Pictures/wallpapers/rosepeak.png", width);
+    image: url("/home/luis/dotfiles/Pictures/wallpapers/rosepeak.png", height);
+    image-width: url("/home/luis/dotfiles/Pictures/wallpapers/rosepeak.png", width);
     background: #121415;
     primary: #a3cde1;
     primary-fixed: #bee9fe;

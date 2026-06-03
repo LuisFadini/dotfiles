@@ -3,14 +3,7 @@ fallback_color = '#8caaee'
 caching = true
 
 [config.wallpaper]
-arguments = [
-  'img',
-  '--transition-type',
-  'grow',
-  '--transition-pos',
-  '0.894,0.960',
-]
-command = 'awww'
+command = 'awww img --transition-type grow --transition-pos 0.894,0.960 "{{ image }}"'
 set = true
 
 [templates.hyprland]

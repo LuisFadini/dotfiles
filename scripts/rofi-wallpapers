@@ -32,6 +32,6 @@ if [ ! -f "$image_path" ]; then
     exit 1
 fi
 
-matugen image "$image_path" --type scheme-content
+matugen image "$image_path" --type scheme-content --source-color-index 0
 
 notify-send "Wallpaper updated" -a "Matugen" -u "low" -i "$image_path"
